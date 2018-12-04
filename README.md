@@ -6,6 +6,9 @@ Created it for stepper motor 28BYJ-48, after other code examples didn't work wel
 ## How to use
 You can look at the [Arduino example file](servo-control-example.ino).
 
+![Running the sample code](stepper-sample.gif)
+_(Running the example code)_
+
 Steps:
 1. Clone repository, or download `ServoStepper.h` and `ServoStepper.cpp` (put them in your arduino project folder)
 2. Include library inside arduino (.ino) file
