@@ -1,17 +1,17 @@
 /*
-  ServoStepper.h - Library for controlling servo motors
+  StepMotor.h - Library for controlling step motors
   Created by Amit Bourmad, 2018-12-03
 */
-#ifndef ServoStepper_h
-#define ServoStepper_h
+#ifndef StepMotor_h
+#define StepMotor_h
 
 #include "Arduino.h"
 
 
-class ServoStepper
+class StepMotor
 {
   public:
-    ServoStepper(int pin1, int pin2, int pin3, int pin4);
+    StepMotor(int pin1, int pin2, int pin3, int pin4);
     void rotate(int dir, int steps);
     void rotateClock(int steps);
     void rotateCounter(int steps);

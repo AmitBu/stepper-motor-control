@@ -1,10 +1,10 @@
 /*
-  ServoStepper.h - Library for controlling servo motors
+  StepMotor.h - Library for controlling step motors
   Created by Amit Bourmad, 2018-12-03
 */
 
 #include "Arduino.h"
-#include "ServoStepper.h"
+#include "StepMotor.h"
 
 /**
  * Describes the inputs values (low/high) at each step
@@ -22,7 +22,7 @@ int stepMatrix[8][4] = {
   {1, 0, 0, 1}
 };
 
-ServoStepper::ServoStepper(int pin1, int pin2, int pin3, int pin4) {
+StepMotor::StepMotor(int pin1, int pin2, int pin3, int pin4) {
   _pin1 = pin1;
   _pin2 = pin2;
   _pin3 = pin3;
@@ -35,35 +35,35 @@ ServoStepper::ServoStepper(int pin1, int pin2, int pin3, int pin4) {
   pinMode(_pin4, OUTPUT);
 }
 
-void ServoStepper::rotate(int dir, int steps) {
+void StepMotor::rotate(int dir, int steps) {
   for (int i = steps; i >= 0; i--) {
-    // Send command to servo
+    // Send command to stepper
     _makeStep(); 
     
     // Stepper write stepper(steps)
     _updateParameters(dir);
     
-    // Must - without it the servo won't spin
+    // Must - without it the stepper won't spin
     delay(2);
   }
 }
 
-void ServoStepper::rotateClock(int steps) {
+void StepMotor::rotateClock(int steps) {
   rotate(1, steps);
 }
 
-void ServoStepper::rotateCounter(int steps) {
+void StepMotor::rotateCounter(int steps) {
   rotate(-1, steps);
 }
 
-void ServoStepper::_makeStep() {
+void StepMotor::_makeStep() {
   digitalWrite(_pin1, stepMatrix[_currStep][0]);
   digitalWrite(_pin2, stepMatrix[_currStep][1]);
   digitalWrite(_pin3, stepMatrix[_currStep][2]);
   digitalWrite(_pin4, stepMatrix[_currStep][3]);
 }
 
-void ServoStepper::_updateParameters(int dir) {
+void StepMotor::_updateParameters(int dir) {
   _currStep += dir;
   
   if (_currStep > 7) {
