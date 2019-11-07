@@ -4,7 +4,7 @@ C++ class library that controls a stepper motor,
 Created it for stepper motor 28BYJ-48, after other code examples didn't work well.
 
 ## How to use
-You can look at the [Arduino example file](stepper-control-example.ino).
+You can look at the [Arduino example file](examples/stepper-control-example/stepper-control-example.ino).
 
 ![Running the sample code](stepper-sample.gif)
 _(Running the example code)_
